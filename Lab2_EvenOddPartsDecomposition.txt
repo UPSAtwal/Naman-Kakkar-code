@@ -1,0 +1,32 @@
+clear;
+clc;
+
+%%% Decompose signal x(n) = u(n) - u(n - 10) into even and odd parts
+n = -20:1:20;
+un = (n >= 0);  % Unit step signal u(n)
+und = (n >= 10);    % Delayed unit step signal u(n - 10)
+xn = un - und;  % x(n)
+xn_f = fliplr(xn);  %x(-n)
+xen = (xn + xn_f) / 2;  % Even part
+xon = (xn - xn_f) / 2;  % Odd part
+
+% Plot original signal
+subplot(1, 3, 1);
+stem(n, xn);
+xlabel('Time (n) -->');
+ylabel('Amplitude x(n) -->');
+title('Original signal');
+
+% Plot even part
+subplot(1, 3, 2);
+stem(n, xen);
+xlabel('Time (n) -->');
+ylabel('Amplitude xe(n) -->');
+title('Even component of the signal');
+
+% Plot odd part
+subplot(1, 3, 3);
+stem(n, xon);
+xlabel('Time (n) -->');
+ylabel('Amplitude xo(n)--->');
+title('Odd component of the signal');

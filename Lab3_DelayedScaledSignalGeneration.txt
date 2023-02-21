@@ -1,0 +1,38 @@
+clear;
+clc;
+
+% u(t - 1) generation
+t = -3:0.0001:3;
+utd = (t >= 1);
+subplot(2, 2, 1);
+plot(t, utd);
+xlabel('Time (t) -->');
+ylabel('Amplitude u(t - 1) -->');
+title('a) Delayed unit step signal');
+
+% u(2t + 1) generation
+t = -1:0.0001:1;
+uts = (t >= -1/2);
+subplot(2, 2, 2);
+plot(t, uts);
+xlabel('Time (t) -->');
+ylabel('Amplitude u(2t + 1) -->');
+title('b) Scaled, advanced unit step signal');
+
+% r(t - 1) generation
+t = -2:0.0001:2;
+rtd = (t >= 1) .* (t - 1);
+subplot(2, 2, 3);
+plot(t, rtd);
+xlabel('Time (t) -->');
+ylabel('Amplitude r(t - 1) -->');
+title('c) Delayed ramp signal');
+
+% sinc signal generation
+t = -20:0.0001:20;
+y = sin(pi .* t) ./ (pi .* t);
+subplot(2, 2, 4);
+plot(t, y);
+xlabel('Time (t) -->');
+ylabel('Amplitude sinc(t) -->');
+title('d) Sinc signal');

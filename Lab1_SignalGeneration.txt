@@ -1,0 +1,78 @@
+clear;
+clc;
+
+% Continuous time unit step signal
+t = -40:0.0001:40;
+ut = (t >= 0);
+subplot(4, 2, 1);
+plot(t, ut);
+xlabel('Time (t) -->');
+ylabel('Amplitude u(t) -->');
+title('a) Continuous time unit step signal');
+
+% Discrete time unit step signal
+n = -40:1:40;
+un = (n >= 0);
+subplot(4, 2, 2);
+stem(n, un);
+xlabel('Time (n) -->');
+ylabel('Amplitude u[n]');
+title('b) Discrete time unit step signal');
+
+% Continuous time unit impulse signal
+t = -40:0.0001:40;
+dt = (t == 0);
+subplot(4, 2, 3);
+plot(t, dt);
+xlabel('Time (t) -->');
+ylabel('Amplitude d(t) -->');
+title('c) Continuous time unit impulse signal');
+
+% Discrete time unit impulse signal
+n = -40:1:40;
+dn = (n == 0);
+subplot(4, 2, 4);
+stem(n, dn);
+xlabel("Time (n) -->");
+ylabel("Amplitude d[n] -->");
+title("d) Discrete time unit impulse signal");
+
+% Continuous time unit ramp signal
+t = -40:0.0001:40;
+rt = (t >= 0) .* t;
+subplot(4, 2, 5);
+plot(t, rt);
+xlabel("Time (t) -->");
+ylabel("Amplitude r(t) -->");
+title("e) Continuous time unit ramp signal");
+
+% Discrete time unit ramp signal
+n = -40:1:40;
+rn = (n >= 0) .* n;
+subplot(4, 2, 6);
+stem(n, rn);
+xlabel("Time (n) -->");
+ylabel("Amplitude r[n] -->");
+title("f) Discrete time unit ramp signal");
+
+% Continuous time rectangular pulse with width = 2
+t = -5:0.0001:5;
+ut1 = (t >= -1);
+ut2 = (t > 1);
+rect = ut1 - ut2;
+subplot(4, 2, 7);
+plot(t, rect);
+xlabel("Time (t) -->");
+ylabel("Amplitude rect(t) -->");
+title("g) Continuous time rectangular pulse with width = 2");
+
+% Discrete time rectangular pulse with width = 2
+n = -5:1:5;
+un1 = (n >= -1);
+un2 = (n > 1);
+rect = un1 - un2;
+subplot(4, 2, 8);
+stem(n, rect);
+xlabel("Time (n) -->");
+ylabel("Amplitude rect[n] -->");
+title("h) Discrete time rectangular pulse with width = 2");
